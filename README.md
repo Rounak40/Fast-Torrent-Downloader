@@ -20,7 +20,7 @@ Here're some of the project's best features:
 <p>1. Clone the repository to your local machine:</p>
 
 ```
-git clone https://github.com/yourusername/torrent-downloader.git 
+git clone https://github.com/Rounak40/Fast-Torrent-Downloader.git
 ```
 
 <p>2. Install Modules:</p>
