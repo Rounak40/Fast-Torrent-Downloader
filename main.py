@@ -81,7 +81,8 @@ while True:
         torrents_list = api.search_torrent(query)
         for i, torrent in enumerate(torrents_list):
             print(f"{i+1}. Title: {torrent['title']}")
-            print(f"   Size: {torrent['size']} | Seeders: {torrent['seeders']} ")
+            if torrent.get('size') and torrent.get('seeders'):
+                print(f"   Size: {torrent['size']} | Seeders: {torrent['seeders']} ")
             print(f"   Upload Date: {torrent['upload_date']} | Uploader: {torrent['uploader']}")
             print()
 
