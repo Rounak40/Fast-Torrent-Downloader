@@ -26,7 +26,7 @@ git clone https://github.com/Rounak40/Fast-Torrent-Downloader.git
 <p>2. Install Modules:</p>
 
 ```
-cd torrent-downloader
+cd Fast-Torrent-Downloader
 pip install -r requirements.txt
 ```
 
