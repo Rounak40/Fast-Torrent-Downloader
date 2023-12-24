@@ -2,8 +2,6 @@ import urllib.parse
 import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
-import re
-
 
 
 def convert_bytes_to_gb_mb(byte_size):
@@ -151,8 +149,7 @@ class torrentio:
         self.session.headers  = {
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
             }
-        self.pattern = r"(?P<title>.*?)\n👤 (?P<seeders>\d+) 💾 (?P<size>[\d.]+ \w+) ⚙️ (?P<uploader>\w+)"
-        
+
     def get_magnet_link(self,data):
         magnet_link = 'magnet:?xt=urn:btih:' + data['infoHash']
         return magnet_link
@@ -180,9 +177,9 @@ class torrentio:
             res = self.session.get(self.TORRENT_URL+"/stream/series/"+_id+".json").json()
 
         for i in res["streams"]:
-            temp = re.match(self.pattern, i['title']).groupdict()
+            temp = i
             temp["upload_date"] = "N/A"
-            temp["infoHash"] = i["infoHash"]
+            temp['uploader'] = i['name'].replace("\n"," ")
             torrents_list.append(temp)
 
             if len(torrents_list) == self.LIMIT:
