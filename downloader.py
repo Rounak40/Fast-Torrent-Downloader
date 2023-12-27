@@ -71,7 +71,7 @@ class Seedr:
                     failed = True
                     break
 
-                tries =+1
+                tries += 1
                 time.sleep(5)
 
             if failed:
@@ -138,7 +138,10 @@ class Seedr:
         for torrent in items["torrents"]:
             if torrent['name'] == title:
                 return str(torrent['id'])
-        return -1
+        try:
+            return str(items["torrents"][-1]['id'])
+        except:
+            return -1
 
 
     def get_folder_id(self,title):
